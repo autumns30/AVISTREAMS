@@ -293,6 +293,35 @@
             gap: 8px;
         }
 
+        .header-live-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: #ec4899;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .header-live-btn:hover {
+            background: #db2777;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5);
+        }
+        .header-live-btn i {
+            font-size: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
         .music-btn {
             background: none;
             border: none;
@@ -849,6 +878,8 @@
             .search-box .shortcut { display: none; }
             .music-btn { font-size: 16px; padding: 4px 8px; }
             .music-btn .now-playing { display: none !important; }
+            .header-live-btn { font-size: 10px; padding: 6px 12px; }
+            .header-live-btn i { font-size: 8px; }
             .hero { padding: 70px 16px 30px; min-height: 40vh; }
             .hero h1 { font-size: 24px; }
             .hero p { font-size: 13px; }
@@ -878,6 +909,8 @@
             .search-box input { font-size: 11px; }
             .search-box .search-icon { font-size: 11px; }
             .music-btn { font-size: 14px; padding: 3px 6px; }
+            .header-live-btn { font-size: 9px; padding: 5px 10px; }
+            .header-live-btn i { font-size: 7px; }
             .hero { padding: 60px 12px 20px; min-height: 35vh; }
             .hero h1 { font-size: 20px; }
             .hero p { font-size: 12px; }
@@ -922,6 +955,10 @@
         </div>
 
         <div class="nav-right">
+            <!-- ===== NEW HEADER LIVE STREAM BUTTON ===== -->
+            <button class="header-live-btn" onclick="openStream('https://exmxbxe.cfd/pcxfqt3f-7712', '⚡ LIVE NOW')" title="Watch Live Stream">
+                <i class="fas fa-circle"></i> Watch Live
+            </button>
             <button class="music-btn" id="musicToggle" onclick="toggleMusic()" title="Play Music">
                 <i class="fas fa-music"></i>
                 <span class="now-playing">♫ Playing</span>
@@ -951,7 +988,7 @@
             </div>
             <h1>Watch <span class="highlight">Live TV</span> Anywhere</h1>
             <p>Your favorite sports, entertainment, kids, and news channels — all in one place.</p>
-            <button class="btn-play" onclick="openStream('https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig', 'Live TV Test Stream')">
+            <button class="btn-play" onclick="openStream('https://exmxbxe.cfd/pcxfqt3f-7712', '⚡ LIVE NOW')">
                 <i class="fas fa-play"></i> Watch Now
             </button>
         </div>
@@ -1035,7 +1072,7 @@
     </footer>
 
     <!-- ============================================================
-    JAVASCRIPT - ALL WORKING CHANNELS
+    JAVASCRIPT - ALL WORKING CHANNELS + CUSTOM EMBED
     ============================================================ -->
     <script>
         // ============================================================
@@ -1119,9 +1156,17 @@
         });
 
         // ============================================================
-        // CHANNELS - ALL WORKING
+        // CHANNELS - ALL WORKING + CUSTOM EMBED AT TOP
         // ============================================================
         const channels = [
+            // ===== CUSTOM EMBED (FIRST CHANNEL) =====
+            { 
+                name: '⚡ LIVE NOW',
+                category: 'all',
+                banner: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&h=200&fit=crop',
+                embed: 'https://exmxbxe.cfd/pcxfqt3f-7712'
+            },
+
             // ===== SPORTS =====
             { 
                 name: 'ESPN USA',
@@ -1294,6 +1339,7 @@
             const grid = document.getElementById('channelGrid');
             let filtered = channels;
 
+            // Apply category filter (custom embed has category 'all', so it shows in 'all')
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(c => c.category === currentCategory);
             }
@@ -1439,6 +1485,7 @@
         console.log('🥔 Click "STREAMS" to make aloo rain!');
         console.log('⚠️  Don\'t click the "don\'t click" button... or do 😈');
         console.log('📺 All channels are YouTube live streams - guaranteed working!');
+        console.log('⚡ Custom embed added as first channel and in header!');
     </script>
 </body>
 </html>
